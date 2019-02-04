@@ -1,0 +1,8 @@
+prefix=/home/turtlebot/catkin_ws/devel
+
+Name: bot_follower
+Description: Description of bot_follower
+Version: 2.3.7
+Cflags: -I/home/turtlebot/catkin_ws/devel/include
+Libs: -L/home/turtlebot/catkin_ws/devel/lib -lbot_follower
+Requires: nodelet roscpp visualization_msgs turtlebot_msgs depth_image_proc dynamic_reconfigure
