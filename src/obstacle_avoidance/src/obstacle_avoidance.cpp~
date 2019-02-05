@@ -47,8 +47,9 @@ double Center = 320;
 std::vector<uint16_t> goal_xs;
 
 //gcounter
-int gcounter=100;
-int grotate=100;
+int gcounter=0;
+//int ginit2=0;
+//int gfinal=100000;
 
 // fucntional vars
 double blob_x;
@@ -106,15 +107,14 @@ blob_x=goal_sum_x; //setting glob var
 
 void imagecb(const sensor_msgs::ImageConstPtr& depth_msg)
   {
-std::cout << "Getting called!" << std::endl;
 
 	//local variables
   double min_y_ = 0.1; /**< The minimum y position of the points in the box. */
   double max_y_ = 0.5; /**< The maximum y position of the points in the box. */
   double min_x_ = -1; /**< The minimum x position of the points in the box. */
   double max_x_ = 1; /**< The maximum x position of the points in the box. */
-  double max_z_ = 2; /**< The maximum z position of the points in the box. */
-  double goal_z_ = 0.6; /**< The distance away from the robot to hold the centroid */
+  double max_z_ = 0.8; /**< The maximum z position of the points in the box. */
+  double goal_z_ = 0.3; /**< The distance away from the robot to hold the centroid */
   double z_scale_ = 2.0; /**< The scaling factor for translational robot speed */
   double x_scale_ = 7.0; /**< The scaling factor for rotational robot speed */
   bool   enabled_ = true; /**< Enable/disable following; just prevents motor commands */
@@ -250,19 +250,31 @@ int main (int argc, char** argv)
   ros::Rate loop_rate(10);
   geometry_msgs::Twist t;
 
-  while(ros::ok()){
+while(ros::ok()){
 
  if(obstate==0 and blobstate==0)// Cannot see obstacle any more
 {
+
 std::cout << "zero"<< std::endl;
 std::cout << obstate<< std::endl;
 std::cout << blobstate<< std::endl;
-
+std::cout << gcounter<< std::endl;
+if(gcounter>0)
+{
+gcounter--;
 geometry_msgs::TwistPtr cmd(new geometry_msgs::Twist());
-
-cmd->linear.x = 0.0;
-cmd->angular.z = 0.3;// rotate until target is in sight.
+std::cout << "stop after obstacle"<< std::endl;
+cmd->linear.x = 0.2;
+cmd->angular.z = 0.0; // rotate until obstacle is in sight.
 cmdpub_.publish(cmd);
+}
+else{
+geometry_msgs::TwistPtr cmd(new geometry_msgs::Twist());
+cmd->linear.x = 0;
+cmd->angular.z = 0.5; // rotate until obstacle is in sight.
+cmdpub_.publish(cmd);
+
+}
 
 } // the if block
 
@@ -271,19 +283,24 @@ cmdpub_.publish(cmd);
 
  else if ((obstate==1 and blobstate==0) )
 {
+std::cout << gcounter<< std::endl;
+if(gcounter<200)
+{
+gcounter+=1;
+}
 std::cout << "obstacle"<< std::endl;
 std::cout << blobstate<< std::endl;
+std::cout << obstate<< std::endl;
+
 geometry_msgs::TwistPtr cmd(new geometry_msgs::Twist());
-cmd->linear.x = 0.2;
-cmd->angular.z = 0.7; // rotate until obstacle is in sight.
+cmd->linear.x=0.0;
+cmd->angular.z=0.5;
 cmdpub_.publish(cmd);
-
-
-    } 
+} 
 
 
 else if ((obstate==1 and blobstate ==1) or (obstate==0 and blobstate==1))
-{
+{	
 	std::cout << "target"<< std::endl;
 	std::cout << obstate<< std::endl;
 	std::cout << blobstate<< std::endl;
@@ -291,14 +308,14 @@ else if ((obstate==1 and blobstate ==1) or (obstate==0 and blobstate==1))
         cmd->linear.x = 0.2;
         cmd->angular.z = -(blob_x-350.0)*0.005;
         cmdpub_.publish(cmd);
-
-    }
+}
 
     obstate=0;
     blobstate=0;
     // Spin
-    ros::spinOnce();
-    loop_rate.sleep();
+	ros::spinOnce();
+	loop_rate.sleep();
   }
+
 }
 
