@@ -1,12 +1,28 @@
-/************************************************************
+/*****************************************************************************************
  * Name: obstacle_avoidance.cpp
- * Author: Alyssa Kubota, Sanmi Adeleye
- * Date: 02/18/2018
+ * Author: Vaishali Rajendren, Surya Tamraparni
+ * Date: 02/05/2019
+ * HW #6: Non-verbal sensing & Multimodal controllers
  *
- * Description: This program will subscribe to the /blobs topic,
- *        and use the blob information to find and go towards
- *        the blobs in a user-set order.
- ***********************************************************/
+ * Description: This program will subscribe to the /blobs topic 
+ *              and camera/depth/image_rect topic and use the 
+ *              blob information to find and go towards
+ *              the blobs in a user-set order and if there's an 
+ *              obstacle that is detected from /image_rect topic 
+ *              it will move around the obstacle to find the target
+ *              and start moving again towards the target. 
+ * 
+ * Commands Used: roscore
+ *                roslaunch turtlebot_bringup minimal.launch
+ *                roslaunch astra_launch astra_pro.launch
+ *                roslaunch turtlebot_dashboard turltebot_dashboard.launch
+ *                rosrun cmvision colorgui image:=/camera/rgb/image_raw
+ *                After calibration, copy the YUV and RGB values to color.txt file
+ *                Using rosparam set /cmvision/color_file turtlebotws/cmvision/colors.txt
+ *                rosrun cmvision cmvision image:=/camera/rgb/image_raw
+ *                rosrun obstacle_avoidance obstacle_avoidance 
+ *             
+ *****************************************************************************************/
 
 #include <kobuki_msgs/BumperEvent.h> 
 #include <cmvision/Blob.h>
@@ -23,86 +39,66 @@
 #include <sensor_msgs/Image.h> //added from follower
 #include <depth_image_proc/depth_traits.h>  //added from follower
 
-//#include <pluginlib/class_list_macros.h>
-//#include <nodelet/nodelet.h>
-
-//#include <visualization_msgs/Marker.h>
-//#include <turtlebot_msgs/SetFollowState.h>
-
-//#include "dynamic_reconfigure/server.h"
-//#include "bot_follower/FollowerConfig.h"
-
-
-
-
-
-
-
 ros::Publisher pub;
 
 typedef pcl::PointCloud<pcl::PointXYZ> PointCloud;
 
-//uint16_t state=0;
-double Center = 320;
+
+double Center = 320; //mean of the centroid of x from /blobs
 std::vector<uint16_t> goal_xs;
 
-//gcounter
+//gcounter - counter variable
 int gcounter=0;
-//int ginit2=0;
-//int gfinal=100000;
 
 // fucntional vars
 double blob_x;
 double obstaclex;
 double obstaclez;
 
-
 //states
-int obstate=0;
-int blobstate=0;
-//int obsdetected=0;
+int obstate=0; //if obstactle is detected
+int blobstate=0; //if target is detected 
 
 
 
-/************************************************************
+
+/***********************************************************************
  * Function Name: blobsCallBack
  * Parameters: const cmvision::Blobs
  * Returns: void
  *
- * Description: This is the callback function of the /blobs topic
- ***********************************************************/
+ * Description: This is the callback function of the /blobs topic and 
+ *              calculates centroid of the target
+ ************************************************************************/
 
 void blobsCallBack (const cmvision::Blobs& blobsIn) //this gets the centroid of the color blob corresponding to the goal.
 {
-if (blobsIn.blob_count > 0){
+	if (blobsIn.blob_count > 0){
 
-blobstate=1;    
-int n=blobsIn.blob_count;
-//std::cout << "Blobs!!" << std::endl;
-//std::cout << n  << std::endl;
-
-double goal_sum_x=0;
-double goal_sum_y=0;
+	blobstate=1;   //sets the target state to 1 if target is available 
+	int n=blobsIn.blob_count;
+	double goal_sum_x=0;
+	double goal_sum_y=0;
 
 
-for (int i = 0; i < blobsIn.blob_count; i++){
-	goal_sum_x += blobsIn.blobs[i].x;
-	goal_sum_y += blobsIn.blobs[i].y;
-}
-goal_sum_x/=n;
-goal_sum_y/=n;
-
-//std::cout << "Blob centroid x" << std::endl;
-//std::cout << goal_sum_x << std::endl;
-
-//std::cout << "Blob centroid y" << std::endl;
-//std::cout << goal_sum_y << std::endl;
-
-    
-blob_x=goal_sum_x; //setting glob var
+	for (int i = 0; i < blobsIn.blob_count; i++){
+		goal_sum_x += blobsIn.blobs[i].x;
+		goal_sum_y += blobsIn.blobs[i].y;
+	}
+	goal_sum_x/=n;
+	goal_sum_y/=n;   
+	blob_x=goal_sum_x; //setting glob var
 	}
 }
 
+/**************************************************************************************
+ * Function Name: imagecb taken from follower.cpp to calculate centroid
+ * Parameters: const sensor_msgs::ImageConstPtr& depth_msg
+ * Returns: void
+ *
+ * Description: This is the callback function of the /camera/depth/image_rect topic and 
+ *              calculates centroid of the obstacle
+ **************************************************************************************/
 
 
 void imagecb(const sensor_msgs::ImageConstPtr& depth_msg)
@@ -167,70 +163,21 @@ void imagecb(const sensor_msgs::ImageConstPtr& depth_msg)
     }
 
     //If there are points, find the centroid and calculate the command goal.
-    //If there are no points, simply publish a stop goal.
     if (n>4000)
     {
       x /= n;
       y /= n;        //At this point, x,y,z are the centroid coordinates
       if(z > max_z_){
         ROS_INFO_THROTTLE(1, "Centroid too far away %f, stopping the robot", z);}
-       /* if (enabled_)
-        {
-          cmdpub_.publish(geometry_msgs::TwistPtr(new geometry_msgs::Twist()));//looks like twist() initializes all to 0.
-        }
-        return;
-      }
-
-      ROS_INFO_THROTTLE(1, "Centroid at %f %f %f with %d points", x, y, z, n);
-      publishMarker(x, y, z); */
       
       if (enabled_)  //enabled
       {
-	obstate=1;
-	obstaclex= (z - goal_z_) * z_scale_;
-	obstaclez=-x * x_scale_;
-        //geometry_msgs::TwistPtr cmd(new geometry_msgs::Twist());  //set values of scales
-	//cmd->linear.x = (z - goal_z_) * z_scale_;
-        //cmd->angular.z = -x * x_scale_;
-       // cmdpub_.publish(cmd);
+	obstate=1; //setting obstacle state to 1 if an obstacle is detected
+	obstaclex= (z - goal_z_) * z_scale_; //setting linear velocity
+	obstaclez=-x * x_scale_; //setting angular velocity
       }
     }
-   /* else
-    {
-      ROS_INFO_THROTTLE(1, "Not enough points(%d) detected, stopping the robot", n);
-      publishMarker(x, y, z);
-
-      if (enabled_)
-      {
-        cmdpub_.publish(geometry_msgs::TwistPtr(new geometry_msgs::Twist()));
-      }
-    }*/
-
-  //  publishBbox();  // what happens if this is removed?
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 int main (int argc, char** argv)
@@ -238,13 +185,13 @@ int main (int argc, char** argv)
   // Initialize ROS
   ros::init (argc, argv, "blob");
   ros::NodeHandle nh;
-  //States variable 
-  //state = 0;
-  
+
+  //creating publisher for the topic cmd_vel_mux/input/teleop  
   ros::Publisher cmdpub_ = nh.advertise<geometry_msgs::Twist> ("cmd_vel_mux/input/teleop", 10);
 
   //subscribe to /blobs topic 
   ros::Subscriber blobsSubscriber = nh.subscribe("/blobs", 10, blobsCallBack);
+  //subscribe to camera/depth/image_rect topic 
   ros::Subscriber sub_= nh.subscribe<sensor_msgs::Image>("camera/depth/image_rect", 1, imagecb ); // follower.cpp //&BotFollower::imagecb, this
 
   ros::Rate loop_rate(10);
@@ -252,64 +199,70 @@ int main (int argc, char** argv)
 
 while(ros::ok()){
 
- if(obstate==0 and blobstate==0)// Cannot see obstacle any more
+ //First state (state 0) 
+ if(obstate==0 and blobstate==0)// Cannot see obstacle any more or initial state
 {
 
-std::cout << "zero"<< std::endl;
+//For debugging
+std::cout << "zero"<< std::endl; 
 std::cout << obstate<< std::endl;
 std::cout << blobstate<< std::endl;
 std::cout << gcounter<< std::endl;
+
+//After an obstacle is detected this value will not be zero 
 if(gcounter>0)
 {
 gcounter--;
 geometry_msgs::TwistPtr cmd(new geometry_msgs::Twist());
 std::cout << "stop after obstacle"<< std::endl;
 cmd->linear.x = 0.2;
-cmd->angular.z = 0.0; // rotate until obstacle is in sight.
+cmd->angular.z = 0.0; //Stop after obstacle
 cmdpub_.publish(cmd);
 }
 else{
 geometry_msgs::TwistPtr cmd(new geometry_msgs::Twist());
 cmd->linear.x = 0;
-cmd->angular.z = 0.5; // rotate until obstacle is in sight.
+cmd->angular.z = 0.5; //initial state, it spins
 cmdpub_.publish(cmd);
 
 }
 
-} // the if block
+} 
 
-
-
-
- else if ((obstate==1 and blobstate==0) )
+ else if ((obstate==1 and blobstate==0) ) //State 1 obstacle detection
 {
 std::cout << gcounter<< std::endl;
 if(gcounter<50)
 {
 gcounter+=1;
 }
+
+//For debugging
 std::cout << "obstacle"<< std::endl;
 std::cout << blobstate<< std::endl;
 std::cout << obstate<< std::endl;
 
 geometry_msgs::TwistPtr cmd(new geometry_msgs::Twist());
 cmd->linear.x=0.0;
-cmd->angular.z=0.5;
+cmd->angular.z=0.5; //moves away from the obstacle
 cmdpub_.publish(cmd);
 } 
 
+//Target is detected
 
-else if ((obstate==1 and blobstate ==1) or (obstate==0 and blobstate==1))
+else if ((obstate==1 and blobstate ==1) or (obstate==0 and blobstate==1)) //Target state, state = 1
 {	
+        //For debugging 
 	std::cout << "target"<< std::endl;
 	std::cout << obstate<< std::endl;
 	std::cout << blobstate<< std::endl;
 	geometry_msgs::TwistPtr cmd(new geometry_msgs::Twist());
         cmd->linear.x = 0.2;
-        cmd->angular.z = -(blob_x-350.0)*0.005;
+        cmd->angular.z = -(blob_x-350.0)*0.005; //Follows the target
         cmdpub_.publish(cmd);
 }
 
+    //Reset the state
     obstate=0;
     blobstate=0;
     // Spin

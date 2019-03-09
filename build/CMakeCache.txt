@@ -354,6 +354,12 @@ gtest_force_shared_crt:BOOL=OFF
 //Dependencies for the target
 gtest_main_LIB_DEPENDS:STATIC=general;-lpthread;general;gtest;
 
+//Value Computed by CMake
+human_interaction_BINARY_DIR:STATIC=/home/turtlebot/catkin_ws/build/human_interaction
+
+//Value Computed by CMake
+human_interaction_SOURCE_DIR:STATIC=/home/turtlebot/catkin_ws/src/human_interaction
+
 //The directory containing a CMake configuration file for kobuki_msgs.
 kobuki_msgs_DIR:PATH=/opt/ros/indigo/share/kobuki_msgs/cmake
 
@@ -443,6 +449,9 @@ smclib_DIR:PATH=/opt/ros/indigo/share/smclib/cmake
 
 //Value Computed by CMake
 sound_play_BINARY_DIR:STATIC=/home/turtlebot/catkin_ws/build/sound_play
+
+//The directory containing a CMake configuration file for sound_play.
+sound_play_DIR:PATH=/home/turtlebot/catkin_ws/devel/share/sound_play/cmake
 
 //Value Computed by CMake
 sound_play_SOURCE_DIR:STATIC=/home/turtlebot/catkin_ws/src/sound_play
@@ -595,7 +604,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_LOCAL_GENERATORS:INTERNAL=6
+CMAKE_NUMBER_OF_LOCAL_GENERATORS:INTERNAL=7
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

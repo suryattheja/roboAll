@@ -1069,7 +1069,7 @@ actionlib_generate_messages_cpp: cmake_check_build_system
 
 # fast build rule for target.
 actionlib_generate_messages_cpp/fast:
-	$(MAKE) -f obstacle_avoidance/CMakeFiles/actionlib_generate_messages_cpp.dir/build.make obstacle_avoidance/CMakeFiles/actionlib_generate_messages_cpp.dir/build
+	$(MAKE) -f human_interaction/CMakeFiles/actionlib_generate_messages_cpp.dir/build.make human_interaction/CMakeFiles/actionlib_generate_messages_cpp.dir/build
 .PHONY : actionlib_generate_messages_cpp/fast
 
 #=============================================================================
@@ -1082,7 +1082,7 @@ actionlib_generate_messages_lisp: cmake_check_build_system
 
 # fast build rule for target.
 actionlib_generate_messages_lisp/fast:
-	$(MAKE) -f obstacle_avoidance/CMakeFiles/actionlib_generate_messages_lisp.dir/build.make obstacle_avoidance/CMakeFiles/actionlib_generate_messages_lisp.dir/build
+	$(MAKE) -f human_interaction/CMakeFiles/actionlib_generate_messages_lisp.dir/build.make human_interaction/CMakeFiles/actionlib_generate_messages_lisp.dir/build
 .PHONY : actionlib_generate_messages_lisp/fast
 
 #=============================================================================
@@ -1095,7 +1095,7 @@ actionlib_generate_messages_py: cmake_check_build_system
 
 # fast build rule for target.
 actionlib_generate_messages_py/fast:
-	$(MAKE) -f obstacle_avoidance/CMakeFiles/actionlib_generate_messages_py.dir/build.make obstacle_avoidance/CMakeFiles/actionlib_generate_messages_py.dir/build
+	$(MAKE) -f human_interaction/CMakeFiles/actionlib_generate_messages_py.dir/build.make human_interaction/CMakeFiles/actionlib_generate_messages_py.dir/build
 .PHONY : actionlib_generate_messages_py/fast
 
 #=============================================================================
@@ -1108,7 +1108,7 @@ cmvision_generate_messages_cpp: cmake_check_build_system
 
 # fast build rule for target.
 cmvision_generate_messages_cpp/fast:
-	$(MAKE) -f obstacle_avoidance/CMakeFiles/cmvision_generate_messages_cpp.dir/build.make obstacle_avoidance/CMakeFiles/cmvision_generate_messages_cpp.dir/build
+	$(MAKE) -f human_interaction/CMakeFiles/cmvision_generate_messages_cpp.dir/build.make human_interaction/CMakeFiles/cmvision_generate_messages_cpp.dir/build
 .PHONY : cmvision_generate_messages_cpp/fast
 
 #=============================================================================
@@ -1121,7 +1121,7 @@ cmvision_generate_messages_lisp: cmake_check_build_system
 
 # fast build rule for target.
 cmvision_generate_messages_lisp/fast:
-	$(MAKE) -f obstacle_avoidance/CMakeFiles/cmvision_generate_messages_lisp.dir/build.make obstacle_avoidance/CMakeFiles/cmvision_generate_messages_lisp.dir/build
+	$(MAKE) -f human_interaction/CMakeFiles/cmvision_generate_messages_lisp.dir/build.make human_interaction/CMakeFiles/cmvision_generate_messages_lisp.dir/build
 .PHONY : cmvision_generate_messages_lisp/fast
 
 #=============================================================================
@@ -1134,8 +1134,21 @@ cmvision_generate_messages_py: cmake_check_build_system
 
 # fast build rule for target.
 cmvision_generate_messages_py/fast:
-	$(MAKE) -f obstacle_avoidance/CMakeFiles/cmvision_generate_messages_py.dir/build.make obstacle_avoidance/CMakeFiles/cmvision_generate_messages_py.dir/build
+	$(MAKE) -f human_interaction/CMakeFiles/cmvision_generate_messages_py.dir/build.make human_interaction/CMakeFiles/cmvision_generate_messages_py.dir/build
 .PHONY : cmvision_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named human_interaction
+
+# Build rule for target.
+human_interaction: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 human_interaction
+.PHONY : human_interaction
+
+# fast build rule for target.
+human_interaction/fast:
+	$(MAKE) -f human_interaction/CMakeFiles/human_interaction.dir/build.make human_interaction/CMakeFiles/human_interaction.dir/build
+.PHONY : human_interaction/fast
 
 #=============================================================================
 # Target rules for targets named kobuki_msgs_generate_messages_cpp
@@ -1147,7 +1160,7 @@ kobuki_msgs_generate_messages_cpp: cmake_check_build_system
 
 # fast build rule for target.
 kobuki_msgs_generate_messages_cpp/fast:
-	$(MAKE) -f obstacle_avoidance/CMakeFiles/kobuki_msgs_generate_messages_cpp.dir/build.make obstacle_avoidance/CMakeFiles/kobuki_msgs_generate_messages_cpp.dir/build
+	$(MAKE) -f human_interaction/CMakeFiles/kobuki_msgs_generate_messages_cpp.dir/build.make human_interaction/CMakeFiles/kobuki_msgs_generate_messages_cpp.dir/build
 .PHONY : kobuki_msgs_generate_messages_cpp/fast
 
 #=============================================================================
@@ -1160,7 +1173,7 @@ kobuki_msgs_generate_messages_lisp: cmake_check_build_system
 
 # fast build rule for target.
 kobuki_msgs_generate_messages_lisp/fast:
-	$(MAKE) -f obstacle_avoidance/CMakeFiles/kobuki_msgs_generate_messages_lisp.dir/build.make obstacle_avoidance/CMakeFiles/kobuki_msgs_generate_messages_lisp.dir/build
+	$(MAKE) -f human_interaction/CMakeFiles/kobuki_msgs_generate_messages_lisp.dir/build.make human_interaction/CMakeFiles/kobuki_msgs_generate_messages_lisp.dir/build
 .PHONY : kobuki_msgs_generate_messages_lisp/fast
 
 #=============================================================================
@@ -1173,8 +1186,177 @@ kobuki_msgs_generate_messages_py: cmake_check_build_system
 
 # fast build rule for target.
 kobuki_msgs_generate_messages_py/fast:
-	$(MAKE) -f obstacle_avoidance/CMakeFiles/kobuki_msgs_generate_messages_py.dir/build.make obstacle_avoidance/CMakeFiles/kobuki_msgs_generate_messages_py.dir/build
+	$(MAKE) -f human_interaction/CMakeFiles/kobuki_msgs_generate_messages_py.dir/build.make human_interaction/CMakeFiles/kobuki_msgs_generate_messages_py.dir/build
 .PHONY : kobuki_msgs_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named pcl_msgs_generate_messages_cpp
+
+# Build rule for target.
+pcl_msgs_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 pcl_msgs_generate_messages_cpp
+.PHONY : pcl_msgs_generate_messages_cpp
+
+# fast build rule for target.
+pcl_msgs_generate_messages_cpp/fast:
+	$(MAKE) -f human_interaction/CMakeFiles/pcl_msgs_generate_messages_cpp.dir/build.make human_interaction/CMakeFiles/pcl_msgs_generate_messages_cpp.dir/build
+.PHONY : pcl_msgs_generate_messages_cpp/fast
+
+#=============================================================================
+# Target rules for targets named pcl_msgs_generate_messages_lisp
+
+# Build rule for target.
+pcl_msgs_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 pcl_msgs_generate_messages_lisp
+.PHONY : pcl_msgs_generate_messages_lisp
+
+# fast build rule for target.
+pcl_msgs_generate_messages_lisp/fast:
+	$(MAKE) -f human_interaction/CMakeFiles/pcl_msgs_generate_messages_lisp.dir/build.make human_interaction/CMakeFiles/pcl_msgs_generate_messages_lisp.dir/build
+.PHONY : pcl_msgs_generate_messages_lisp/fast
+
+#=============================================================================
+# Target rules for targets named pcl_msgs_generate_messages_py
+
+# Build rule for target.
+pcl_msgs_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 pcl_msgs_generate_messages_py
+.PHONY : pcl_msgs_generate_messages_py
+
+# fast build rule for target.
+pcl_msgs_generate_messages_py/fast:
+	$(MAKE) -f human_interaction/CMakeFiles/pcl_msgs_generate_messages_py.dir/build.make human_interaction/CMakeFiles/pcl_msgs_generate_messages_py.dir/build
+.PHONY : pcl_msgs_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named pcl_ros_gencfg
+
+# Build rule for target.
+pcl_ros_gencfg: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 pcl_ros_gencfg
+.PHONY : pcl_ros_gencfg
+
+# fast build rule for target.
+pcl_ros_gencfg/fast:
+	$(MAKE) -f human_interaction/CMakeFiles/pcl_ros_gencfg.dir/build.make human_interaction/CMakeFiles/pcl_ros_gencfg.dir/build
+.PHONY : pcl_ros_gencfg/fast
+
+#=============================================================================
+# Target rules for targets named tf2_msgs_generate_messages_cpp
+
+# Build rule for target.
+tf2_msgs_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 tf2_msgs_generate_messages_cpp
+.PHONY : tf2_msgs_generate_messages_cpp
+
+# fast build rule for target.
+tf2_msgs_generate_messages_cpp/fast:
+	$(MAKE) -f human_interaction/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/build.make human_interaction/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/build
+.PHONY : tf2_msgs_generate_messages_cpp/fast
+
+#=============================================================================
+# Target rules for targets named tf2_msgs_generate_messages_lisp
+
+# Build rule for target.
+tf2_msgs_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 tf2_msgs_generate_messages_lisp
+.PHONY : tf2_msgs_generate_messages_lisp
+
+# fast build rule for target.
+tf2_msgs_generate_messages_lisp/fast:
+	$(MAKE) -f human_interaction/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/build.make human_interaction/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/build
+.PHONY : tf2_msgs_generate_messages_lisp/fast
+
+#=============================================================================
+# Target rules for targets named tf2_msgs_generate_messages_py
+
+# Build rule for target.
+tf2_msgs_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 tf2_msgs_generate_messages_py
+.PHONY : tf2_msgs_generate_messages_py
+
+# fast build rule for target.
+tf2_msgs_generate_messages_py/fast:
+	$(MAKE) -f human_interaction/CMakeFiles/tf2_msgs_generate_messages_py.dir/build.make human_interaction/CMakeFiles/tf2_msgs_generate_messages_py.dir/build
+.PHONY : tf2_msgs_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named tf_generate_messages_cpp
+
+# Build rule for target.
+tf_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 tf_generate_messages_cpp
+.PHONY : tf_generate_messages_cpp
+
+# fast build rule for target.
+tf_generate_messages_cpp/fast:
+	$(MAKE) -f human_interaction/CMakeFiles/tf_generate_messages_cpp.dir/build.make human_interaction/CMakeFiles/tf_generate_messages_cpp.dir/build
+.PHONY : tf_generate_messages_cpp/fast
+
+#=============================================================================
+# Target rules for targets named tf_generate_messages_lisp
+
+# Build rule for target.
+tf_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 tf_generate_messages_lisp
+.PHONY : tf_generate_messages_lisp
+
+# fast build rule for target.
+tf_generate_messages_lisp/fast:
+	$(MAKE) -f human_interaction/CMakeFiles/tf_generate_messages_lisp.dir/build.make human_interaction/CMakeFiles/tf_generate_messages_lisp.dir/build
+.PHONY : tf_generate_messages_lisp/fast
+
+#=============================================================================
+# Target rules for targets named tf_generate_messages_py
+
+# Build rule for target.
+tf_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 tf_generate_messages_py
+.PHONY : tf_generate_messages_py
+
+# fast build rule for target.
+tf_generate_messages_py/fast:
+	$(MAKE) -f human_interaction/CMakeFiles/tf_generate_messages_py.dir/build.make human_interaction/CMakeFiles/tf_generate_messages_py.dir/build
+.PHONY : tf_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named topic_tools_generate_messages_cpp
+
+# Build rule for target.
+topic_tools_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 topic_tools_generate_messages_cpp
+.PHONY : topic_tools_generate_messages_cpp
+
+# fast build rule for target.
+topic_tools_generate_messages_cpp/fast:
+	$(MAKE) -f human_interaction/CMakeFiles/topic_tools_generate_messages_cpp.dir/build.make human_interaction/CMakeFiles/topic_tools_generate_messages_cpp.dir/build
+.PHONY : topic_tools_generate_messages_cpp/fast
+
+#=============================================================================
+# Target rules for targets named topic_tools_generate_messages_lisp
+
+# Build rule for target.
+topic_tools_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 topic_tools_generate_messages_lisp
+.PHONY : topic_tools_generate_messages_lisp
+
+# fast build rule for target.
+topic_tools_generate_messages_lisp/fast:
+	$(MAKE) -f human_interaction/CMakeFiles/topic_tools_generate_messages_lisp.dir/build.make human_interaction/CMakeFiles/topic_tools_generate_messages_lisp.dir/build
+.PHONY : topic_tools_generate_messages_lisp/fast
+
+#=============================================================================
+# Target rules for targets named topic_tools_generate_messages_py
+
+# Build rule for target.
+topic_tools_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 topic_tools_generate_messages_py
+.PHONY : topic_tools_generate_messages_py
+
+# fast build rule for target.
+topic_tools_generate_messages_py/fast:
+	$(MAKE) -f human_interaction/CMakeFiles/topic_tools_generate_messages_py.dir/build.make human_interaction/CMakeFiles/topic_tools_generate_messages_py.dir/build
+.PHONY : topic_tools_generate_messages_py/fast
 
 #=============================================================================
 # Target rules for targets named obstacle_avoidance
@@ -1188,175 +1370,6 @@ obstacle_avoidance: cmake_check_build_system
 obstacle_avoidance/fast:
 	$(MAKE) -f obstacle_avoidance/CMakeFiles/obstacle_avoidance.dir/build.make obstacle_avoidance/CMakeFiles/obstacle_avoidance.dir/build
 .PHONY : obstacle_avoidance/fast
-
-#=============================================================================
-# Target rules for targets named pcl_msgs_generate_messages_cpp
-
-# Build rule for target.
-pcl_msgs_generate_messages_cpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 pcl_msgs_generate_messages_cpp
-.PHONY : pcl_msgs_generate_messages_cpp
-
-# fast build rule for target.
-pcl_msgs_generate_messages_cpp/fast:
-	$(MAKE) -f obstacle_avoidance/CMakeFiles/pcl_msgs_generate_messages_cpp.dir/build.make obstacle_avoidance/CMakeFiles/pcl_msgs_generate_messages_cpp.dir/build
-.PHONY : pcl_msgs_generate_messages_cpp/fast
-
-#=============================================================================
-# Target rules for targets named pcl_msgs_generate_messages_lisp
-
-# Build rule for target.
-pcl_msgs_generate_messages_lisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 pcl_msgs_generate_messages_lisp
-.PHONY : pcl_msgs_generate_messages_lisp
-
-# fast build rule for target.
-pcl_msgs_generate_messages_lisp/fast:
-	$(MAKE) -f obstacle_avoidance/CMakeFiles/pcl_msgs_generate_messages_lisp.dir/build.make obstacle_avoidance/CMakeFiles/pcl_msgs_generate_messages_lisp.dir/build
-.PHONY : pcl_msgs_generate_messages_lisp/fast
-
-#=============================================================================
-# Target rules for targets named pcl_msgs_generate_messages_py
-
-# Build rule for target.
-pcl_msgs_generate_messages_py: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 pcl_msgs_generate_messages_py
-.PHONY : pcl_msgs_generate_messages_py
-
-# fast build rule for target.
-pcl_msgs_generate_messages_py/fast:
-	$(MAKE) -f obstacle_avoidance/CMakeFiles/pcl_msgs_generate_messages_py.dir/build.make obstacle_avoidance/CMakeFiles/pcl_msgs_generate_messages_py.dir/build
-.PHONY : pcl_msgs_generate_messages_py/fast
-
-#=============================================================================
-# Target rules for targets named pcl_ros_gencfg
-
-# Build rule for target.
-pcl_ros_gencfg: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 pcl_ros_gencfg
-.PHONY : pcl_ros_gencfg
-
-# fast build rule for target.
-pcl_ros_gencfg/fast:
-	$(MAKE) -f obstacle_avoidance/CMakeFiles/pcl_ros_gencfg.dir/build.make obstacle_avoidance/CMakeFiles/pcl_ros_gencfg.dir/build
-.PHONY : pcl_ros_gencfg/fast
-
-#=============================================================================
-# Target rules for targets named tf2_msgs_generate_messages_cpp
-
-# Build rule for target.
-tf2_msgs_generate_messages_cpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 tf2_msgs_generate_messages_cpp
-.PHONY : tf2_msgs_generate_messages_cpp
-
-# fast build rule for target.
-tf2_msgs_generate_messages_cpp/fast:
-	$(MAKE) -f obstacle_avoidance/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/build.make obstacle_avoidance/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/build
-.PHONY : tf2_msgs_generate_messages_cpp/fast
-
-#=============================================================================
-# Target rules for targets named tf2_msgs_generate_messages_lisp
-
-# Build rule for target.
-tf2_msgs_generate_messages_lisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 tf2_msgs_generate_messages_lisp
-.PHONY : tf2_msgs_generate_messages_lisp
-
-# fast build rule for target.
-tf2_msgs_generate_messages_lisp/fast:
-	$(MAKE) -f obstacle_avoidance/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/build.make obstacle_avoidance/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/build
-.PHONY : tf2_msgs_generate_messages_lisp/fast
-
-#=============================================================================
-# Target rules for targets named tf2_msgs_generate_messages_py
-
-# Build rule for target.
-tf2_msgs_generate_messages_py: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 tf2_msgs_generate_messages_py
-.PHONY : tf2_msgs_generate_messages_py
-
-# fast build rule for target.
-tf2_msgs_generate_messages_py/fast:
-	$(MAKE) -f obstacle_avoidance/CMakeFiles/tf2_msgs_generate_messages_py.dir/build.make obstacle_avoidance/CMakeFiles/tf2_msgs_generate_messages_py.dir/build
-.PHONY : tf2_msgs_generate_messages_py/fast
-
-#=============================================================================
-# Target rules for targets named tf_generate_messages_cpp
-
-# Build rule for target.
-tf_generate_messages_cpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 tf_generate_messages_cpp
-.PHONY : tf_generate_messages_cpp
-
-# fast build rule for target.
-tf_generate_messages_cpp/fast:
-	$(MAKE) -f obstacle_avoidance/CMakeFiles/tf_generate_messages_cpp.dir/build.make obstacle_avoidance/CMakeFiles/tf_generate_messages_cpp.dir/build
-.PHONY : tf_generate_messages_cpp/fast
-
-#=============================================================================
-# Target rules for targets named tf_generate_messages_lisp
-
-# Build rule for target.
-tf_generate_messages_lisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 tf_generate_messages_lisp
-.PHONY : tf_generate_messages_lisp
-
-# fast build rule for target.
-tf_generate_messages_lisp/fast:
-	$(MAKE) -f obstacle_avoidance/CMakeFiles/tf_generate_messages_lisp.dir/build.make obstacle_avoidance/CMakeFiles/tf_generate_messages_lisp.dir/build
-.PHONY : tf_generate_messages_lisp/fast
-
-#=============================================================================
-# Target rules for targets named tf_generate_messages_py
-
-# Build rule for target.
-tf_generate_messages_py: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 tf_generate_messages_py
-.PHONY : tf_generate_messages_py
-
-# fast build rule for target.
-tf_generate_messages_py/fast:
-	$(MAKE) -f obstacle_avoidance/CMakeFiles/tf_generate_messages_py.dir/build.make obstacle_avoidance/CMakeFiles/tf_generate_messages_py.dir/build
-.PHONY : tf_generate_messages_py/fast
-
-#=============================================================================
-# Target rules for targets named topic_tools_generate_messages_cpp
-
-# Build rule for target.
-topic_tools_generate_messages_cpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 topic_tools_generate_messages_cpp
-.PHONY : topic_tools_generate_messages_cpp
-
-# fast build rule for target.
-topic_tools_generate_messages_cpp/fast:
-	$(MAKE) -f obstacle_avoidance/CMakeFiles/topic_tools_generate_messages_cpp.dir/build.make obstacle_avoidance/CMakeFiles/topic_tools_generate_messages_cpp.dir/build
-.PHONY : topic_tools_generate_messages_cpp/fast
-
-#=============================================================================
-# Target rules for targets named topic_tools_generate_messages_lisp
-
-# Build rule for target.
-topic_tools_generate_messages_lisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 topic_tools_generate_messages_lisp
-.PHONY : topic_tools_generate_messages_lisp
-
-# fast build rule for target.
-topic_tools_generate_messages_lisp/fast:
-	$(MAKE) -f obstacle_avoidance/CMakeFiles/topic_tools_generate_messages_lisp.dir/build.make obstacle_avoidance/CMakeFiles/topic_tools_generate_messages_lisp.dir/build
-.PHONY : topic_tools_generate_messages_lisp/fast
-
-#=============================================================================
-# Target rules for targets named topic_tools_generate_messages_py
-
-# Build rule for target.
-topic_tools_generate_messages_py: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 topic_tools_generate_messages_py
-.PHONY : topic_tools_generate_messages_py
-
-# fast build rule for target.
-topic_tools_generate_messages_py/fast:
-	$(MAKE) -f obstacle_avoidance/CMakeFiles/topic_tools_generate_messages_py.dir/build.make obstacle_avoidance/CMakeFiles/topic_tools_generate_messages_py.dir/build
-.PHONY : topic_tools_generate_messages_py/fast
 
 # Help Target
 help:
@@ -1447,10 +1460,10 @@ help:
 	@echo "... cmvision_generate_messages_cpp"
 	@echo "... cmvision_generate_messages_lisp"
 	@echo "... cmvision_generate_messages_py"
+	@echo "... human_interaction"
 	@echo "... kobuki_msgs_generate_messages_cpp"
 	@echo "... kobuki_msgs_generate_messages_lisp"
 	@echo "... kobuki_msgs_generate_messages_py"
-	@echo "... obstacle_avoidance"
 	@echo "... pcl_msgs_generate_messages_cpp"
 	@echo "... pcl_msgs_generate_messages_lisp"
 	@echo "... pcl_msgs_generate_messages_py"
@@ -1464,6 +1477,7 @@ help:
 	@echo "... topic_tools_generate_messages_cpp"
 	@echo "... topic_tools_generate_messages_lisp"
 	@echo "... topic_tools_generate_messages_py"
+	@echo "... obstacle_avoidance"
 .PHONY : help
 
 

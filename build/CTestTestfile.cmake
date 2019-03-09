@@ -7,4 +7,5 @@
 SUBDIRS(gtest)
 SUBDIRS(sound_play)
 SUBDIRS(bot_follower)
+SUBDIRS(human_interaction)
 SUBDIRS(obstacle_avoidance)

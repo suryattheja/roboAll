@@ -1,2 +1,2 @@
-bot_follower:obstacle_avoidance:sound_play
+bot_follower:human_interaction:obstacle_avoidance:sound_play
 -DCATKIN_DEVEL_PREFIX=/home/turtlebot/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/turtlebot/catkin_ws/install -G Unix Makefiles

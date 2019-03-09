@@ -119,6 +119,7 @@ IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
   INCLUDE("/home/turtlebot/catkin_ws/build/gtest/cmake_install.cmake")
   INCLUDE("/home/turtlebot/catkin_ws/build/sound_play/cmake_install.cmake")
   INCLUDE("/home/turtlebot/catkin_ws/build/bot_follower/cmake_install.cmake")
+  INCLUDE("/home/turtlebot/catkin_ws/build/human_interaction/cmake_install.cmake")
   INCLUDE("/home/turtlebot/catkin_ws/build/obstacle_avoidance/cmake_install.cmake")
 
 ENDIF(NOT CMAKE_INSTALL_LOCAL_ONLY)
